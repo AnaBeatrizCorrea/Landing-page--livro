@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentos de uma Romântica Incurável | O Livro</title>
+    <!-- Google Fonts para tipografia elegante (Bodoni Moda / Playfair Display e Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #fbf7f5;
+            --card-bg: #ffffff;
+            --primary: #8C3046; /* Vinho / Marsala romântico */
+            --primary-light: #b5455f;
+            --accent: #D9A7A0; /* Rosa queimado suave */
+            --text-main: #2C2224;
+            --text-muted: #6B5B5E;
+            --gold: #C5A059;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .book-title-font {
+            font-family: 'Bodoni Moda', serif;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(251, 247, 245, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(140, 48, 70, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Mockup do Livro em CSS */
+        .book-mockup-wrapper {
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .book {
+            width: 280px;
+            height: 420px;
+            background: linear-gradient(135deg, var(--primary) 0%, #5e1c2c 100%);
+            border-radius: 4px 12px 12px 4px;
+            box-shadow: 20px 20px 40px rgba(140, 48, 70, 0.2), inset -5px 0 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem 2rem;
+            color: white;
+            position: relative;
+            transform: rotateY(-10deg) rotateX(5deg);
+            transition: var(--transition);
+        }
+
+        .book:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        /* Lombada simulada do livro */
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(255,255,255,0.1));
+            border-radius: 4px 0 0 4px;
+        }
+
+        .book-spine-text {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .book-main-title {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem 0;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* Botões de Ação */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(140, 48, 70, 0.2);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(140, 48, 70, 0.3);
+        }
+
+        /* Seção de Curiosidades / Destaques */
+        .curiosity-section {
+            background-color: white;
+            padding: 6rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: var(--transition);
+            border: 1px solid rgba(140, 48, 70, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(140, 48, 70, 0.08);
+            border-color: var(--accent);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Seção Interativa / Spoiler Poético */
+        .spoiler-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #f3e6e8 100%);
+        }
+
+        .spoiler-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(140, 48, 70, 0.08);
+            border: 1px dashed var(--accent);
+        }
+
+        .spoiler-box blockquote {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Seção Para Quem É */
+        .audience-section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .audience-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .audience-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* CTA Final */
+        .final-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--primary);
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-light:hover {
+            background-color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1719;
+            color: #bfaeae;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 8rem;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+            .audience-list {
+                grid-template-columns: 1fr;
+            }
+            .book {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <span class="logo">Romântica Incurável</span>
+            <a href="#comprar" class="nav-btn">Garantir meu exemplar</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Lançamento Exclusivo</span>
+            <h1>Momentos de uma Romântica Incurável</h1>
+            <p>Um mergulho profundo, sincero e apaixonante pelas dores, delícias e borboletas no estômago de quem decide sentir o mundo com o coração inteiro.</p>
+            <div class="cta-buttons">
+                <a href="#comprar" class="btn-primary">
+                    <i class="fa-solid fa-book-open"></i> Quero ler agora
+                </a>
+            </div>
+        </div>
+        <div class="book-mockup-wrapper">
+            <div class="book">
+                <div class="book-spine-text">Poesia & Sentimento</div>
+                <div class="book-main-title">Momentos de uma Romântica Incurável</div>
+                <div class="book-author">Crônicas & Versos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Curiosidades / O que move o livro -->
+    <section class="curiosity-section">
+        <div class="container">
+            <h2 class="section-title">Por que este livro vai te conquistar?</h2>
+            <p class="section-subtitle">Pequenos vislumbres do que aguarda por você nas páginas desta obra</p>
+            
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fa-solid fa-feather"></i>
+                    <h3>Confissões Sem Filtro</h3>
+                    <p>Descubra pensamentos íntimos sobre o início da vida adulta, o frio na barriga dos olhares trocados e a coragem de se expor inteira.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h3>Intensidade em Cada Linha</h3>
+                    <p>Escrito para quem transborda. Cada verso traduz aquela sensação inconfundível de amar os detalhes que o mundo corre demais para reparar.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-moon"></i>
+                    <h3>Refúgio para as Noites</h3>
+                    <p>A companhia perfeita para ler com uma xícara de chá, deixando-se envolver por crônicas que parecem ter sido tiradas diretamente do seu próprio diário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spoiler / Geração de Desejo -->
+    <section class="spoiler-section">
+        <div class="container">
+            <div class="spoiler-box">
+                <span class="badge" style="margin-bottom: 1rem;">Um sopro do que te espera</span>
+                <blockquote>"Haverá sempre um espaço guardado para as memórias que decidimos florir, mesmo quando o mundo insiste em poupar sentimentos."</blockquote>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Pronta para se reconhecer em cada estrofe?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para quem é -->
+    <section class="audience-section">
+        <h2 class="section-title" style="margin-bottom: 3rem;">Este livro é para você que...</h2>
+        <div class="audience-list">
+            <div class="audience-item">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <strong>Acredita no poder dos detalhes</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">Guarda bilhetes, datas marcantes e sorrisos guardados na memória como tesouros.</p>
+                </div>
+            </div>
+            <div class="audience-item">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <strong>Já teve o coração partido (e amou recomeçar)</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">Sabe que cada desilusão é apenas o prelúdio de uma nova e bonita história consigo mesma.</p>
+                </div>
+            </div>
+            <div class="audience-item">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <strong>Ama literatura que acolhe</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">Busca leituras fluidas, sensíveis e carregadas de identificação imediata.</p>
+                </div>
+            </div>
+            <div class="audience-item">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <strong>Não tem vergonha de sentir</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">Defende que a vulnerabilidade é a forma mais bonita de coragem que existe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final / Compra -->
+    <section id="comprar" class="final-cta">
+        <div class="container">
+            <h2>Leve a poesia com você</h2>
+            <p>Garanta o seu exemplar impresso de <strong>Momentos de uma Romântica Incurável</strong> e descubra um novo jeito de olhar para o amor.</p>
+            <a href="#" class="btn-light">
+                <i class="fa-solid fa-bag-shopping" style="color: var(--primary);"></i> Comprar o Livro Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 - Momentos de uma Romântica Incurável. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
